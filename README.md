@@ -10,8 +10,7 @@ nomadnet-pages/
 │   ├── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 │   └── scripts/    # .py dependencies called by the .mu pages
 └── ascii-webcam/
-    ├── pages/
-    └── scripts/
+    └── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 ```
 
 Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one server are never mixed with another.
@@ -47,7 +46,7 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 
 ## Dependencies
 
-Pages are served by a running Nomadnet node. Scripts require the same Python venv as Nomadnet (`~/nomadnet-env`).
+Pages are served by a running Nomadnet node. Scripts (where present) require the same Python venv as Nomadnet (`~/nomadnet-env`).
 
 ## Licence
 
