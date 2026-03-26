@@ -9,8 +9,11 @@ nomadnet-pages/
 ├── pingplotter/
 │   ├── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 │   └── scripts/    # .py dependencies called by the .mu pages
-└── ascii-webcam/
-    └── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
+├── ascii-webcam/
+│   └── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
+└── lora-rnode/
+    ├── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
+    └── scripts/    # background daemons required by the pages
 ```
 
 Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one server are never mixed with another.
@@ -36,6 +39,8 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 | uptime.mu | System uptime |
 | testpage.mu | Test page |
 
+**Dependencies:** `~/.venvs/pingtools/` venv with `plotille` and `typing_extensions`. `announce-listener.py` daemon must be running for announce-rate.mu.
+
 ## Pages — ascii-webcam
 
 | Page | Description |
@@ -44,9 +49,24 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 | webcam.mu | Live webcam image in ASCII art |
 | webcam-colour.mu | Live webcam image in colour ASCII art |
 
-## Dependencies
+**Dependencies:** `fswebcam` (`sudo apt install fswebcam`), `Pillow` in `~/nomadnet-env`. User must be in the `video` group.
 
-Pages are served by a running Nomadnet node. Scripts (where present) require the same Python venv as Nomadnet (`~/nomadnet-env`).
+## Pages — lora-rnode
+
+| Page | Description |
+|------|-------------|
+| index.mu | Landing page |
+| sysinfo.mu | Basic system info |
+| sysinfo2.mu | Extended system info |
+| rnstatus.mu | Reticulum interface status |
+| retconfig.mu | Displays ~/.reticulum/config content |
+| noise-monitor-braille.mu | RF noise floor and channel load graphs over time |
+| rf-noise.mu | Live RF noise floor reading |
+| rf-rssi.mu | Live RSSI from most recent LoRa packet |
+| rssi-monitor.mu | Per-node RSSI/SNR from announces, plotted over time |
+| names.mu | Lists known nodes with resolved human-readable names |
+
+**Dependencies:** `~/.venvs/rns-tools/` venv with `plotille`, `typing_extensions` and `rns`. Daemons `noise-logger.py`, `rssi-logger.py` and `names-resolver.py` must be running for graph and names pages.
 
 ## Licence
 
