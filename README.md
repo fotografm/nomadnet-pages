@@ -11,9 +11,11 @@ nomadnet-pages/
 │   └── scripts/    # .py dependencies called by the .mu pages
 ├── ascii-webcam/
 │   └── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
-└── lora-rnode/
-    ├── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
-    └── scripts/    # background daemons required by the pages
+├── lora-rnode/
+│   ├── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
+│   └── scripts/    # background daemons required by the pages
+└── webcam-files/
+    └── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 ```
 
 Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one server are never mixed with another.
@@ -23,7 +25,7 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 | Page | Description |
 |------|-------------|
 | index.mu | Landing page |
-| ping-graph.mu | Live ping graph to selected hosts |
+| ping-graph.mu | Live ping RTT graph to selected Reticulum nodes |
 | mtr-graph.mu | MTR traceroute graph |
 | announces.mu | Reticulum announce monitor |
 | announce-rate.mu | Announce rate over time |
@@ -46,8 +48,8 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 | Page | Description |
 |------|-------------|
 | index.mu | Landing page |
-| webcam.mu | Live webcam image in ASCII art |
-| webcam-colour.mu | Live webcam image in colour ASCII art |
+| webcam.mu | Live webcam image rendered as ASCII art |
+| webcam-colour.mu | Live webcam image as thermal-style colour ASCII art |
 
 **Dependencies:** `fswebcam` (`sudo apt install fswebcam`), `Pillow` in `~/nomadnet-env`. User must be in the `video` group.
 
@@ -67,6 +69,16 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 | names.mu | Lists known nodes with resolved human-readable names |
 
 **Dependencies:** `~/.venvs/rns-tools/` venv with `plotille`, `typing_extensions` and `rns`. Daemons `noise-logger.py`, `rssi-logger.py` and `names-resolver.py` must be running for graph and names pages.
+
+## Pages — webcam-files
+
+| Page | Description |
+|------|-------------|
+| index.mu | Landing page with links to live webcam JPEG files |
+| status.mu | Reticulum interface status via rnstatus |
+| sysinfo.mu | Basic system info |
+
+**Dependencies:** `fswebcam` (`sudo apt install fswebcam`). User must be in the `video` group. A cron job writes JPEGs every 2 minutes to `~/.nomadnetwork/storage/files/` for Nomadnet to serve via `/file/` links.
 
 ## Licence
 
