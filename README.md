@@ -9,7 +9,7 @@ nomadnet-pages/
 ├── pingplotter/
 │   ├── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 │   └── scripts/    # .py dependencies called by the .mu pages
-└── ascii-webcam/   # (planned)
+└── ascii-webcam/
     ├── pages/
     └── scripts/
 ```
@@ -36,6 +36,14 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 | sysinfo2.mu | Extended system info |
 | uptime.mu | System uptime |
 | testpage.mu | Test page |
+
+## Pages — ascii-webcam
+
+| Page | Description |
+|------|-------------|
+| index.mu | Landing page |
+| webcam.mu | Live webcam image in ASCII art |
+| webcam-colour.mu | Live webcam image in colour ASCII art |
 
 ## Dependencies
 
