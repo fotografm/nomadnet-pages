@@ -1,15 +1,14 @@
-# webcam-files
+# jpeg-webcam
 
 Nomadnet pages for a Reticulum node that serves live webcam images as downloadable
-files via Nomadnet's built-in file serving. No ASCII conversion — clients receive
-the actual JPEG files.
+JPEG files via Nomadnet's built-in file serving. No ASCII conversion — clients
+receive the actual JPEG files directly.
 
 ## Structure
 
 ```
-webcam-files/
-├── pages/          # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
-└── README.md
+jpeg-webcam/
+└── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 ```
 
 Files are written directly to `~/.nomadnetwork/storage/files/` by a cron job

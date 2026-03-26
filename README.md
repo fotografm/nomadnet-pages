@@ -14,7 +14,7 @@ nomadnet-pages/
 ├── lora-rnode/
 │   ├── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 │   └── scripts/    # background daemons required by the pages
-└── webcam-files/
+└── jpeg-webcam/
     └── pages/      # .mu pages → deploy to ~/.nomadnetwork/storage/pages/
 ```
 
@@ -70,7 +70,7 @@ Each subdirectory is a self-contained Nomadnet server. Pages and scripts for one
 
 **Dependencies:** `~/.venvs/rns-tools/` venv with `plotille`, `typing_extensions` and `rns`. Daemons `noise-logger.py`, `rssi-logger.py` and `names-resolver.py` must be running for graph and names pages.
 
-## Pages — webcam-files
+## Pages — jpeg-webcam
 
 | Page | Description |
 |------|-------------|
